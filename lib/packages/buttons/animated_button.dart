@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AnimatedButton extends StatefulWidget {
+class SwainraAnimatedButton extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;
   final double scale;
   final Duration duration;
 
-  const AnimatedButton({
+  const SwainraAnimatedButton({
     super.key,
     required this.child,
     required this.onTap,
@@ -15,10 +15,10 @@ class AnimatedButton extends StatefulWidget {
   });
 
   @override
-  State<AnimatedButton> createState() => _AnimatedButtonState();
+  State<SwainraAnimatedButton> createState() => _SwainraAnimatedButtonState();
 }
 
-class _AnimatedButtonState extends State<AnimatedButton>
+class _SwainraAnimatedButtonState extends State<SwainraAnimatedButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;

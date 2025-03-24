@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ShimmerLoader extends StatefulWidget {
+class SwainraShimmerLoader extends StatefulWidget {
   final double width;
   final double height;
   final BorderRadius borderRadius;
 
-  const ShimmerLoader({
+  const SwainraShimmerLoader({
     super.key,
     this.width = double.infinity,
     this.height = 16.0,
@@ -13,10 +13,10 @@ class ShimmerLoader extends StatefulWidget {
   });
 
   @override
-  State<ShimmerLoader> createState() => _ShimmerLoaderState();
+  State<SwainraShimmerLoader> createState() => _SwainraShimmerLoaderState();
 }
 
-class _ShimmerLoaderState extends State<ShimmerLoader>
+class _SwainraShimmerLoaderState extends State<SwainraShimmerLoader>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 

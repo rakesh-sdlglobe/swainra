@@ -4,6 +4,13 @@ library swainra;
 export 'packages/effects/fade_in.dart';
 export 'packages/effects/shimmer_loader.dart';
 export 'packages/effects/bounce_in.dart';
+export 'packages/effects/elastic_pop.dart';
+export 'packages/effects/scale_fade_in.dart';
+export 'packages/effects/zoom_tilt_effect.dart';
+export 'packages/effects/drift_slide_in.dart';
+export 'packages/effects/flicker_fade.dart';
+export 'packages/effects/flip_in_Y.dart';
+export 'packages/effects/pulse_glow.dart';
 
 
 // Text
@@ -25,7 +32,14 @@ export 'packages/text/zoom_spin_text.dart';
 export 'packages/buttons/ripple_button.dart';
 export 'packages/buttons/animated_button.dart';
 export 'packages/buttons/swap_button.dart';
-
+export 'packages/buttons/floating_shadow_button.dart';
+export 'packages/buttons/outline_fill_button.dart';
+export 'packages/buttons/circular_reveal_button.dart';
+export 'packages/buttons/shine_effect_button.dart';
+export 'packages/buttons/color_morph_button.dart';
+export 'packages/buttons/rotate_on_press_button.dart';
+export 'packages/buttons/long_press_progress_button.dart';
+export 'packages/buttons/scale_ontap_button.dart';
 
 // Card
 export 'packages/card/neumorphic_card.dart';
@@ -62,3 +76,15 @@ export 'packages/loading/luminous_gleam.dart';
 export 'packages/loading/aurora_pulse.dart';
 export 'packages/loading/helix_rise.dart';
 export 'packages/loading/galaxy_dots.dart';
+
+//scroll
+export 'packages/scroll/parallax_scroll_effect.dart';
+export 'packages/scroll/fade_in_on_scroll.dart';
+export 'packages/scroll/depth_zoom_scroll.dart';
+export 'packages/scroll/slide_in_on_scroll.dart';
+export 'packages/scroll/blur_in_scroll.dart';
+export 'packages/scroll/sticky_glitch_scroll.dart';
+export 'packages/scroll/magic_trail_scroll.dart';
+export 'packages/scroll/parallax_slide_scroll.dart';
+export 'packages/scroll/wavey_scroll_list.dart';
+export 'packages/scroll/shrink_glow_scroll.dart';
