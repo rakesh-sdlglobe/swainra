@@ -88,3 +88,11 @@ export 'packages/scroll/magic_trail_scroll.dart';
 export 'packages/scroll/parallax_slide_scroll.dart';
 export 'packages/scroll/wavey_scroll_list.dart';
 export 'packages/scroll/shrink_glow_scroll.dart';
+
+//core
+export 'packages/core/theme_controller.dart';
+export 'packages/core/theme.dart';
+export 'packages/core/constants.dart';
+
+//widgets
+export 'packages/widgets/swainra_rich_text_animator.dart';

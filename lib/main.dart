@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:swainra/swainra.dart';
 
-void main() => runApp(const SwainraExampleApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ThemeController.loadTheme();
+  runApp(const SwainraExampleApp());
+}
 
 class SwainraExampleApp extends StatelessWidget {
   const SwainraExampleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Swainra Animation Demo',
-      theme: ThemeData(useMaterial3: true),
-      home: const AnimationHomePage(),
-      debugShowCheckedModeBanner: false,
+    return ValueListenableBuilder<ThemeData>(
+      valueListenable: ThemeController.themeNotifier,
+      builder: (_, theme, __) {
+        return MaterialApp(
+          title: 'Swainra Animation Demo',
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          home: const AnimationHomePage(),
+        );
+      },
     );
   }
 }
@@ -22,75 +31,45 @@ class AnimationHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      appBar: AppBar(title: const Text('Swainra Animations')),
-      body: Padding(
-        padding: const EdgeInsets.all(28.0),
+      appBar: AppBar(title: const Text('Swainra Animations'), actions: [
+        IconButton(
+          icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+          onPressed: ThemeController.toggleTheme,
+        )
+      ]),
+      body: const Padding(
+        padding: EdgeInsets.all(28.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SwainraLongPressProgressButton(
-                onComplete: () => print('Long Press Complete!'),
-                label: 'Long Press',
+              Text(
+                "Hello, Swainra World!",
               ),
-              const SizedBox(height: 10),
-              SwainraRotateOnPressButton(
-                onTap: () => print('Rotate Button Tapped!'),
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Text('Rotate',
-                      style: TextStyle(color: Colors.white)),
-                ),
+              SizedBox(height: 20),
+              Card(
+                child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                        "Neumorphic Card, Neumorphic Card, Neumorphic Card,Neumorphic Card,Neumorphic Card,Neumorphic Card,")),
               ),
-              const SizedBox(height: 10),
-              SwainraOutlineFillButton(
-                text: 'Outline Fill',
-                onTap: () => print('Outline Fill Button Tapped!'),
+              SizedBox(height: 20),
+              SwainraRichTextAnimator(
+                "This is <b>bold</b>, <i>italic</i>, <u>underline</u>, <g>gradient</g> and <c color='#e91e63'>pink</c> text.\nYou can <size=40>also</size=40> use **bold** or *italic* with markdown style! ",
+                gradient:
+                    const LinearGradient(colors: [Colors.teal, Colors.amber]),
+                animation: SwainraTextAnimation.slideUp,
               ),
-              const SizedBox(height: 10),
-              SwainraCircularRevealButton(
-                text: 'Circular Reveal',
-                onTap: () => print('Circular Reveal Button Tapped!'),
-              ),
-              const SizedBox(height: 10),
-              SwainraShineEffectButton(
-                label: 'Shine Effect',
-                onTap: () => print('Shine Effect Button Tapped!'),
-              ),
-              const SizedBox(height: 10),
-              SwainraColorMorphButton(
-                label: 'Color Morph',
-                onTap: () => print('Color Morph Button Tapped!'),
-              ),
-              const SizedBox(height: 10),
-              SwainraScaleOnTapButton(
-                onTap: () => print('Scale On Tap Button Tapped!'),
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Text('Scale On Tap',
-                      style: TextStyle(color: Colors.white)),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SwainraAnimatedButton(
-                onTap: () => print('Animated Button Tapped!'),
-                child: const Text('Animated Button',
-                    style: TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height: 10),
-              SwainraSwapButton(
-                onSwap: () => print('Swap Button Tapped!'),
-              ),
+              SizedBox(height: 20),
+              SwainraRichTextAnimator(
+                "This is a <b>bold</b> word and a <link url='https://flutter.dev'>link</link> to Flutter's website.",
+                animation: SwainraTextAnimation.fadeIn,
+                gradient: LinearGradient(colors: [Colors.orange, Colors.pink]),
+              )
             ],
           ),
         ),
